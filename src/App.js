@@ -14,7 +14,7 @@ function App() {
   const success = (position) => {
     setLat(position.coords.latitude);
     setLon(position.coords.longitude);
-    // console.log(lat, lon);
+    console.log(lat, lon);
     return `my location: ${lat}, ${lon}`;
   };
 
@@ -22,7 +22,7 @@ function App() {
 
   const handleClick = () => {
     // console.log('clicked')
-    setUrl(`https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon})`)
+    setUrl(`https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`)
     navigator.geolocation.getCurrentPosition(success, error);
   };
 

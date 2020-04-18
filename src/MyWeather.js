@@ -1,22 +1,18 @@
 import React from "react";
 
-function MyWeather({onClick, lat, lon, data}) {
-
-
+function MyWeather({ lat, lon, data }) {
+  const temp = data.main.temp;
+  const loc = data.name + ", " + data.sys.country;
+  const desc = data.weather[0].main;
 
   return (
-    <div className="container">
-      <button
-        type="button" 
-        onClick={onClick}
-      >
-        <h1>locate me</h1>
-      </button>
-      <p>my coordinates: lat: {lat}, lon: {lon}</p>
-      {/* <p>my location: {loc} </p> */}
-      <p>temperature: {data.temp}C</p>
-      {/* <p>description: {desc}</p> */}
-      
+    <div>
+      <p>
+        my coordinates: lat: {lat}, lon: {lon}
+      </p>
+      <p>my location: {loc} </p>
+      <p>temperature: {temp}C</p>
+      <p>description: {desc}</p>
     </div>
   );
 }

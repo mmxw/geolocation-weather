@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import MyWeather from "./MyWeather";
+import Button from "./Button";
 import axios from "axios";
 
-console.log('inside app')
 function App() {
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
-  const [data, setData] = useState({ main: {} });
+  const [data, setData] = useState(null);
   const [url, setUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,24 +16,24 @@ function App() {
     const lon = position.coords.longitude;
     setLat(lat);
     setLon(lon);
-    setUrl(`https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`);
+    setUrl(
+      `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`
+    );
   };
 
   const error = () => "your location cannot be retrieved";
 
   const handleClick = () => {
-    // console.log('clicked')
-    setIsLoading(true); 
+    setIsLoading(true);
     navigator.geolocation.getCurrentPosition(success, error);
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      try {        
+      try {
         const result = await axios(url);
-        setData(result.data.main);
+        setData(result.data);
         setIsLoading(false);
-        console.log(data)
       } catch (error) {
         console.log(error);
       }
@@ -41,13 +41,20 @@ function App() {
     if (url) fetchData();
   }, [url]);
 
+  let child;
+  if (isLoading) {
+    child = <div>loading...</div>;
+  } else {
+    child =
+      data === null ? null : <MyWeather lat={lat} lon={lon} data={data} />;
+  }
+
   return (
     <div className="app">
-      {/* {MyLoc({onClick: handleClick, lat, lon})} */}
-      {console.log('app rendering')}
-      {isLoading ? <div>loading...</div> : 
-        <MyWeather onClick={handleClick} lat={lat} lon={lon} data={data}/>
-      }
+      <div className="container">
+        <Button onClick={handleClick} />
+        {child}
+      </div>
     </div>
   );
 }

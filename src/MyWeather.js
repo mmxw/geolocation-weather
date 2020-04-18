@@ -1,20 +1,22 @@
 import React from "react";
 
 function MyWeather({onClick, lat, lon, data}) {
-  // console.log(...arguments)
 
-  if (data === undefined) {debugger}
-  
+
+
   return (
-    <div>
+    <div className="container">
       <button
         type="button" 
         onClick={onClick}
       >
-        click to show local weather
+        <h1>locate me</h1>
       </button>
-      <p>my location: lat: {lat}, lon: {lon}</p>
+      <p>my coordinates: lat: {lat}, lon: {lon}</p>
+      {/* <p>my location: {loc} </p> */}
       <p>temperature: {data.temp}C</p>
+      {/* <p>description: {desc}</p> */}
+      
     </div>
   );
 }

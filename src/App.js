@@ -52,6 +52,7 @@ function App() {
   return (
     <div className="app">
       <div className="container">
+        <h1>instant weather</h1>
         <Button onClick={handleClick} />
         {child}
       </div>

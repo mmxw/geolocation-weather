@@ -27,7 +27,7 @@ a {
 }
 p { margin: 1.375rem 0; }
 
-.icon {
+.weather {
   position: relative;
   display: inline-block;
   width: 12em;

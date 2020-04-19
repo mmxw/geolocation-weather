@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import MyWeather from "./MyWeather";
-import Button from "./Button";
+import LocButton from "./LocButton";
 import axios from "axios";
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
     <div className="app">
       <div className="container">
         <h1>instant weather</h1>
-        <Button onClick={handleClick} />
+        <LocButton onClick={handleClick} />
         {child}
       </div>
     </div>

@@ -5,7 +5,6 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    {console.log('rendering')}
     <App />
   </React.StrictMode>,
   document.getElementById('root')
